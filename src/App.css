@@ -1,0 +1,39 @@
+
+@font-face {
+  font-family: "GOT";
+  font-style: normal;
+  font-weight: 400;
+  src: local("GOT"), local("GOT"), url("./fonts/got.ttf") format("truetype");
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
+body{
+  min-height: 100vh;
+}
+
+.App {
+  margin: auto;
+  background: white;
+  min-height: 100vh;
+}
+
+header {
+  font-family: GOT;
+  padding: 20px 5px;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  background: white;
+}
+
+button:focus{
+  border: none;
+  outline: none;
+}
