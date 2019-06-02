@@ -1,0 +1,24 @@
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 35px;
+}
+
+.modal-header .close img {
+  width: 12px;
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+.close img:hover {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-header p {
+  margin: 0;
+  font-weight: 500;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+}
