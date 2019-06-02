@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import gql from "graphql-tag";
-import { graphql } from "react-apollo";
-import Question from "../question";
+import React, { useState } from 'react';
+import gql from 'graphql-tag';
+import { graphql } from 'react-apollo';
+import Question from '../question';
 
-import "./questions.css";
+import './questions.css';
 
 const Questions = ({ questions }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -12,8 +12,8 @@ const Questions = ({ questions }) => {
 
   const currentQuestion = questions[currentIndex];
 
-  const onNextClicked = selectedOption => {
-    if (currentQuestion.answer === selectedOption.option) setScore(score + 1);
+  const onNextClicked = (selectedOption) => {
+    if (currentQuestion.answer === selectedOption) setScore(score + 1);
     if (currentIndex + 1 > questions.length - 1) {
       setShowFinished(true);
       return;
@@ -68,20 +68,22 @@ const GET_QUESTIONS_QUERY = gql`
         question
         options
         answer
-        image
+        image {
+          downloadUrl
+        }
       }
     }
   }
 `;
 
 export default graphql(GET_QUESTIONS_QUERY, {
-  props: result => {
+  props: (result) => {
     const { loading, data } = result;
     let items = [];
     if (data && data.questionsList) items = data.questionsList.items;
     return {
       loading,
-      questions: items
+      questions: items,
     };
-  }
+  },
 })(Questions);

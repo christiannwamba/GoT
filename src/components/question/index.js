@@ -11,7 +11,7 @@ const Question = ({ question, onNextClicked }) => {
   };
 
   const isCorrect = option => {
-    return option.option === question.answer;
+    return option === question.answer;
   };
 
   const resetQuestion = () => {
@@ -23,7 +23,7 @@ const Question = ({ question, onNextClicked }) => {
   return (
     <div className="question">
       <div className="question-image-holder">
-        <img className="question-image" src={question.image} alt={question} />
+        <img className="question-image" src={question.image.downloadUrl} alt={question} />
       </div>
       <section>
         <div className="question-text-holder">
@@ -31,24 +31,24 @@ const Question = ({ question, onNextClicked }) => {
           <h4 className="question-text">{question.question}</h4>
         </div>
 
-        {question.options.map(option => {
+        {question.options.map((option, index) => {
           return (
             <button
-              key={option.id}
+              key={index}
               onClick={() => onOptionClicked(option)}
               disabled={answered && !isCorrect(option)}
               className={`question-option ${answered &&
                 isCorrect(option) &&
                 "correct"}
-              ${selectedOption.option === option.option &&
+              ${selectedOption === option &&
                 !isCorrect(option) &&
                 "wrong"}
               `}
             >
               <span>
-                {answered ? (isCorrect(option) ? "✔" : "X") : option.id}
+                {answered ? (isCorrect(option) ? "✔" : "X") : (index+1)}
               </span>
-              {option.option}
+              {option}
             </button>
           );
         })}
