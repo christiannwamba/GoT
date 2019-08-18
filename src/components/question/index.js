@@ -23,7 +23,7 @@ const Question = ({ question, onNextClicked }) => {
   return (
     <div className="question">
       <div className="question-image-holder">
-        <img className="question-image" src={question.image.downloadUrl} alt={question} />
+        <img className="question-image" src={question.image ? question.image.downloadUrl : ''} alt={question} />
       </div>
       <section>
         <div className="question-text-holder">
